@@ -50,8 +50,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TreeGeneratorTests.cs" />
+    <Compile Include="TreeGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeneratingTrees\GeneratingTrees.csproj">
