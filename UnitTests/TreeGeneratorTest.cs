@@ -6,7 +6,7 @@ using GeneratingTrees;
 
 namespace UnitTests {
     [TestClass]
-    public class TreeGeneratorTests {
+    public class TreeGeneratorTest {
         [TestMethod]
         public void AlgorithmP_0 () {
             Assert.IsTrue ( TreeGenerator.AlgorithmP ( 0 ).Count == 0 );
@@ -26,7 +26,8 @@ namespace UnitTests {
                 "()()()()", "()()(())", "()(())()", "()(()())",
                 "()((()))", "(())()()", "(())(())", "(()())()",
                 "(()()())", "(()(()))", "((()))()", "((())())",
-                "((()()))", "(((())))"};
+                "((()()))", "(((())))"
+            };
             ICollection<String> result = TreeGenerator.AlgorithmP ( 4 );
 
             Assert.IsTrue ( result.Count == nestedPar4.Count );
