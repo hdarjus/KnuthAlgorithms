@@ -41,18 +41,9 @@ namespace UnitTests {
         [TestMethod]
         public void Forest_Equal () {
             for ( int i = 0; i < pars.Count; i++ ) {
-                Parentheses p = new Parentheses ( pars[i] );
-                LeftRight b = new LeftRight ( lefts[i], rights[i] );
-                Assert.IsTrue ( p.Equals ( b ), "Pars " + pars[i] );
-            }
-        }
-
-        [TestMethod]
-        public void Conversion_BLR2P () {
-            for ( int i = 0; i < pars.Count; i++ ) {
-                IEnumerable<Tuple<int, int>> list = lefts[i].Zip ( rights[i], Tuple.Create<int, int> );
-                String actual = Forest.Conversion.LR2P ( list.ToList () );
-                Assert.AreEqual ( pars[i], actual );
+                Forest p = new Parentheses ( pars[i] );
+                Forest b = new LeftRight ( lefts[i], rights[i] );
+                Assert.AreEqual ( p, b );
             }
         }
     }

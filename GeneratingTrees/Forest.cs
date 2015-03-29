@@ -7,49 +7,39 @@ using GeneratingTrees.ForestRepresentations;
 
 namespace GeneratingTrees {
     public abstract class Forest : IEquatable<Forest> {
-        public abstract bool Equals ( Forest other );
+        public bool Equals ( Forest other ) {
+            if ( other == null )
+                throw new NullReferenceException ();
+            else
+                return Conversion.Convert2Nodes ( this ).Equals ( Conversion.Convert2Nodes ( other ) );
+        }
 
-        public static class Conversion {
-            public static Nodes Convert2Nodes ( Forest f ) {
-                if ( f == null )
-                    throw new NullReferenceException ();
-                if ( f is Nodes )
-                    return (Nodes)f;
-                else
-                    throw new ArgumentException ();
-            }
-            /*
-             * LeftRight to Parentheses conversion
-             */
-            public static String LR2P (List<Tuple<int,int>> data) {
-                if ( data.Count < 0 )
-                    throw new ArgumentException ();
-                else if ( data.Count == 0 )
-                    return "";
-                StringBuilder s = new StringBuilder ( 2 * data.Count );
-                Stack<int> stack = new Stack<int> ( data.Count );
-                s.Append ( '(' );
-                stack.Push ( 1 );
-                while ( stack.Count > 0 ) {
-                    int t = stack.Peek ();
-                    if ( data[t - 1].Item1 == 0 ) {
-                        t = stack.Pop ();
-                        s.Append ( ')' );
-                        while ( stack.Count > 0 && data[t-1].Item2 == 0 ) {
-                            t = stack.Pop ();
-                            s.Append ( ')' );
-                        }
-                        if ( data[t-1].Item2 != 0 ) {
-                            s.Append ( '(' );
-                            stack.Push ( data[t - 1].Item2 );
-                        }
-                    } else {
-                        s.Append ( '(' );
-                        stack.Push ( data[t - 1].Item1 );
-                    }
-                }
-                return s.ToString ();
-            }
+        public override bool Equals ( object obj ) {
+            if (obj == null) 
+                return false;
+            Forest f = obj as Forest;
+            if (f == null)
+                return false;
+            else    
+                return Equals(f); 
+        }
+
+        public override int GetHashCode () {
+            return Conversion.Convert2Nodes ( this ).ToString().GetHashCode ();
+        }
+
+        public static bool operator == (Forest f1, Forest f2) {
+            if ( (object)f1 == null || ( (object)f2 ) == null )
+                return Object.Equals ( f1, f2 );
+
+            return f1.Equals ( f2 );
+        }
+
+        public static bool operator != (Forest f1, Forest f2) {
+            if ( f1 == null || f2 == null )
+                return !Object.Equals ( f1, f2 );
+
+            return !( f1.Equals ( f2 ) );
         }
     }
 }

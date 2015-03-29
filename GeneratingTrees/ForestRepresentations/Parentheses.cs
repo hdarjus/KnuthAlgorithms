@@ -12,15 +12,8 @@ namespace GeneratingTrees.ForestRepresentations {
             Data = d;
         }
 
-        public override bool Equals ( Forest other ) {
-            if ( other == null )
-                throw new NullReferenceException ();
-            if ( other is Parentheses ) {
-                return Data == ( (Parentheses)other ).Data;
-            } else if (other is LeftRight) {
-                return Data == Conversion.LR2P(( (LeftRight)other ).Data);
-            } else
-                throw new ArgumentException ();
+        public override string ToString () {
+            return Data;
         }
     }
 }
