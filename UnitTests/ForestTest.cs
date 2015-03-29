@@ -7,12 +7,12 @@ using GeneratingTrees;
 
 namespace UnitTests {
     [TestClass]
-    public class TreeTest {
+    public class ForestTest {
         List<String> pars;
         List<List<int>> lefts;
         List<List<int>> rights;
 
-        public TreeTest () {
+        public ForestTest () {
             pars = new List<String> () {
                 "", "()", "()()", "(())", "(()())",
                 "((()))()", "()(())"
@@ -38,10 +38,10 @@ namespace UnitTests {
         }
 
         [TestMethod]
-        public void Tree_Equal () {
+        public void Forest_Equal () {
             for ( int i = 0; i < pars.Count; i++ ) {
-                TreeParentheses p = new TreeParentheses ( pars[i] );
-                TreeBinaryLeftRight b = new TreeBinaryLeftRight ( lefts[i], rights[i] );
+                ForestParentheses p = new ForestParentheses ( pars[i] );
+                ForestBinaryLeftRight b = new ForestBinaryLeftRight ( lefts[i], rights[i] );
                 Assert.IsTrue ( p.Equals ( b ), "Pars " + pars[i] );
             }
         }
@@ -50,7 +50,7 @@ namespace UnitTests {
         public void Conversion_BLR2P () {
             for ( int i = 0; i < pars.Count; i++ ) {
                 IEnumerable<Tuple<int, int>> list = lefts[i].Zip ( rights[i], Tuple.Create<int, int> );
-                String actual = Tree.Conversion.BLR2P ( list.ToList () );
+                String actual = Forest.Conversion.BLR2P ( list.ToList () );
                 Assert.AreEqual ( pars[i], actual );
             }
         }

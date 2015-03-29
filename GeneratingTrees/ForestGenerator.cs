@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GeneratingTrees {
-    public static class TreeGenerator {
+    public static class ForestGenerator {
         /*
          * Nested parentheses in lexicographic order
          */

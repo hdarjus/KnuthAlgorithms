@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratingTrees", "GeneratingTrees\GeneratingTrees.csproj", "{4B59BA0E-40E8-459F-A0DD-060387066D01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratingForests", "GeneratingTrees\GeneratingForests.csproj", "{4B59BA0E-40E8-459F-A0DD-060387066D01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{0E08206D-792E-4FA5-954A-F90218F2C6AB}"
 EndProject

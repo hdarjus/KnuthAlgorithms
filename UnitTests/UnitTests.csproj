@@ -50,14 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TreeGeneratorTest.cs" />
+    <Compile Include="ForestGeneratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TreeTest.cs" />
+    <Compile Include="ForestTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeneratingTrees\GeneratingTrees.csproj">
+    <ProjectReference Include="..\GeneratingTrees\GeneratingForests.csproj">
       <Project>{4b59ba0e-40e8-459f-a0dd-060387066d01}</Project>
-      <Name>GeneratingTrees</Name>
+      <Name>GeneratingForests</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

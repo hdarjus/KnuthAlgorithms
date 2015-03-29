@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GeneratingTrees {
-    public abstract class Tree : IEquatable<Tree> {
-        public abstract bool Equals ( Tree other );
+    public abstract class Forest : IEquatable<Forest> {
+        public abstract bool Equals ( Forest other );
 
         public static class Conversion {
             /*
@@ -44,29 +44,29 @@ namespace GeneratingTrees {
         }
     }
 
-    public class TreeParentheses : Tree {
+    public class ForestParentheses : Forest {
         public String Data { get; private set; }
 
-        public TreeParentheses ( String d ) {
+        public ForestParentheses ( String d ) {
             Data = d;
         }
 
-        public override bool Equals ( Tree other ) {
+        public override bool Equals ( Forest other ) {
             if ( other == null )
                 throw new NullReferenceException ();
-            if ( other is TreeParentheses ) {
-                return Data == ( (TreeParentheses)other ).Data;
-            } else if (other is TreeBinaryLeftRight) {
-                return Data == Conversion.BLR2P(( (TreeBinaryLeftRight)other ).Data);
+            if ( other is ForestParentheses ) {
+                return Data == ( (ForestParentheses)other ).Data;
+            } else if (other is ForestBinaryLeftRight) {
+                return Data == Conversion.BLR2P(( (ForestBinaryLeftRight)other ).Data);
             } else
                 throw new ArgumentException ();
         }
     }
 
-    public class TreeBinaryLeftRight : Tree {
+    public class ForestBinaryLeftRight : Forest {
         public List<Tuple<int,int>> Data { get; private set; }
 
-        public TreeBinaryLeftRight ( List<int> left, List<int> right ) {
+        public ForestBinaryLeftRight ( List<int> left, List<int> right ) {
             int length = Math.Max ( 0, Math.Min ( left.Count, right.Count ) );
             Data = new List<Tuple<int, int>> ( length );
             for ( int i = 0; i < length; i++ ) {
@@ -74,15 +74,17 @@ namespace GeneratingTrees {
             }
         }
 
-        public override bool Equals ( Tree other ) {
+        public override bool Equals ( Forest other ) {
             if ( other == null )
                 throw new NullReferenceException ();
-            if (other is TreeBinaryLeftRight) {
-                return Data == ( (TreeBinaryLeftRight)other ).Data;
-            } else if ( other is TreeParentheses ) {
-                return Conversion.BLR2P(Data) == ( (TreeParentheses)other ).Data;
+            if (other is ForestBinaryLeftRight) {
+                return Data == ( (ForestBinaryLeftRight)other ).Data;
+            } else if ( other is ForestParentheses ) {
+                return Conversion.BLR2P(Data) == ( (ForestParentheses)other ).Data;
             } else
                 throw new ArgumentException ();
         }
     }
+
+
 }
