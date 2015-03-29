@@ -39,8 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryTree.cs" />
     <Compile Include="Forest.cs" />
+    <Compile Include="ForestRepresentations\LeftRight.cs" />
     <Compile Include="ForestGenerator.cs" />
+    <Compile Include="ForestRepresentations\Nodes.cs" />
+    <Compile Include="ForestRepresentations\Parentheses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

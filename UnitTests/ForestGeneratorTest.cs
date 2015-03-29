@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GeneratingTrees;
+using GeneratingTrees.ForestRepresentations;
 
 namespace UnitTests {
     [TestClass]
@@ -14,9 +15,9 @@ namespace UnitTests {
 
         [TestMethod, Timeout(100)]
         public void AlgorithmP_1 () {
-            ICollection<String> result = ForestGenerator.AlgorithmP ( 1 );
+            ICollection<Forest> result = ForestGenerator.AlgorithmP ( 1 );
             Assert.IsTrue ( result.Count == 1 );
-            Assert.IsTrue ( result.Contains ( "()" ) );
+            Assert.IsTrue ( result.Contains ( new Parentheses ( "()" ) ) );
         }
 
         [TestMethod]
@@ -28,10 +29,10 @@ namespace UnitTests {
                 "(()()())", "(()(()))", "((()))()", "((())())",
                 "((()()))", "(((())))"
             };
-            ICollection<String> result = ForestGenerator.AlgorithmP ( 4 );
+            ICollection<Forest> result = ForestGenerator.AlgorithmP ( 4 );
 
             Assert.IsTrue ( result.Count == nestedPar4.Count );
-            Assert.IsTrue ( nestedPar4.All<String> ( e => result.Contains ( e ) ) );
+            Assert.IsTrue ( nestedPar4.All<String> ( e => result.Contains ( new Parentheses ( e ) ) ) );
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GeneratingTrees;
+using GeneratingTrees.ForestRepresentations;
 
 namespace UnitTests {
     [TestClass]
@@ -40,8 +41,8 @@ namespace UnitTests {
         [TestMethod]
         public void Forest_Equal () {
             for ( int i = 0; i < pars.Count; i++ ) {
-                ForestParentheses p = new ForestParentheses ( pars[i] );
-                ForestBinaryLeftRight b = new ForestBinaryLeftRight ( lefts[i], rights[i] );
+                Parentheses p = new Parentheses ( pars[i] );
+                LeftRight b = new LeftRight ( lefts[i], rights[i] );
                 Assert.IsTrue ( p.Equals ( b ), "Pars " + pars[i] );
             }
         }
@@ -50,7 +51,7 @@ namespace UnitTests {
         public void Conversion_BLR2P () {
             for ( int i = 0; i < pars.Count; i++ ) {
                 IEnumerable<Tuple<int, int>> list = lefts[i].Zip ( rights[i], Tuple.Create<int, int> );
-                String actual = Forest.Conversion.BLR2P ( list.ToList () );
+                String actual = Forest.Conversion.LR2P ( list.ToList () );
                 Assert.AreEqual ( pars[i], actual );
             }
         }
