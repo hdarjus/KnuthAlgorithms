@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphLayout", "GraphLayout\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeContainer", "TreeContainer\TreeContainer.csproj", "{88B86170-EC9F-4ACF-B96E-0F97C28F57BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{BF488FC4-C98F-4750-A3C5-91EB3057FED0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{88B86170-EC9F-4ACF-B96E-0F97C28F57BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88B86170-EC9F-4ACF-B96E-0F97C28F57BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88B86170-EC9F-4ACF-B96E-0F97C28F57BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF488FC4-C98F-4750-A3C5-91EB3057FED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF488FC4-C98F-4750-A3C5-91EB3057FED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF488FC4-C98F-4750-A3C5-91EB3057FED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF488FC4-C98F-4750-A3C5-91EB3057FED0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
