@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GeneratingTrees;
+using GeneratingTrees.ForestRepresentations;
 
 namespace UnitTests {
     [TestClass]
-    public class TreeGeneratorTest {
+    public class ForestGeneratorTest {
         [TestMethod]
         public void AlgorithmP_0 () {
-            Assert.IsTrue ( TreeGenerator.AlgorithmP ( 0 ).Count == 0 );
+            Assert.IsTrue ( ForestGenerator.AlgorithmP ( 0 ).Count == 0 );
         }
 
         [TestMethod, Timeout(100)]
         public void AlgorithmP_1 () {
-            ICollection<String> result = TreeGenerator.AlgorithmP ( 1 );
+            ICollection<Forest> result = ForestGenerator.AlgorithmP ( 1 );
             Assert.IsTrue ( result.Count == 1 );
-            Assert.IsTrue ( result.Contains ( "()" ) );
+            Assert.IsTrue ( result.Contains ( new Parentheses ( "()" ) ) );
         }
 
         [TestMethod]
@@ -28,10 +29,10 @@ namespace UnitTests {
                 "(()()())", "(()(()))", "((()))()", "((())())",
                 "((()()))", "(((())))"
             };
-            ICollection<String> result = TreeGenerator.AlgorithmP ( 4 );
+            ICollection<Forest> result = ForestGenerator.AlgorithmP ( 4 );
 
             Assert.IsTrue ( result.Count == nestedPar4.Count );
-            Assert.IsTrue ( nestedPar4.All<String> ( e => result.Contains ( e ) ) );
+            Assert.IsTrue ( nestedPar4.All<String> ( e => result.Contains ( new Parentheses ( e ) ) ) );
         }
     }
 }
