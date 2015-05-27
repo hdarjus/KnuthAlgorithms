@@ -23,38 +23,34 @@ namespace GUI {
     public partial class MainWindow: Window {
         public MainWindow () {
             InitializeComponent ();
+        }
 
-            List<Parentheses> pars = (new List<String> () {
-                "", "()", "()()", "(())", "(()())",
-                "((()))()", "()(())"
-            }).Select<String, Parentheses>(s => new Parentheses (s)).ToList();
-            List<List<int>> lefts = new List<List<int>> () {
-                new List<int> (),
-                new List<int> () {0},
-                new List<int> () {0, 0},
-                new List<int> () {2, 0},
-                new List<int> () {2, 0, 0},
-                new List<int> () {2, 3, 0, 0},
-                new List<int> () {0, 3, 0}
-            };
-            List<List<int>> rights = new List<List<int>> () {
-                new List<int> (),
-                new List<int> () {0},
-                new List<int> () {2, 0},
-                new List<int> () {0, 0},
-                new List<int> () {0, 3, 0},
-                new List<int> () {4, 0, 0, 0},
-                new List<int> () {2, 0, 0}
-            };
+        private void fillTable ( List<Forest> col ) {
+            if ( col == null || col.Count == 0 )
+                return;
             TableViewModel tvm = new TableViewModel ();
-            for ( int i = 0; i < lefts.Count; i++ ) {
+            for ( int i = 0; i < col.Count; i++ ) {
                 TableRow row = new TableRow ();
-                row.Row.Add ( pars[i] );
-                row.Row.Add ( new LeftRight ( lefts[i], rights[i] ) );
-                tvm.ResultTable.Add(row);
+                row.Row.Add ( col[i] );
+                tvm.ResultTable.Add ( row );
             }
-
             DataContext = tvm;
+        }
+
+        private void RunButtonClick ( object sender, RoutedEventArgs e ) {
+            int n;
+            bool validN = Int32.TryParse ( nTextBox.Text, out n );
+            if ( validN && n > 0 ) {
+                List<Forest> result;
+                if ( rbAlgorithmN.IsChecked == true ) {
+                    result = new List<Forest> ();
+                } else if ( rbAlgorithmP.IsChecked == true ) {
+                    result = ForestGenerator.AlgorithmP ( n );
+                } else {
+                    return;
+                }
+                fillTable ( result );
+            }
         }
     }
 }

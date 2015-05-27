@@ -10,7 +10,7 @@ namespace GeneratingTrees {
         /*
          * Nested parentheses in lexicographic order
          */
-        public static ICollection<Forest> AlgorithmP ( int n ) {
+        public static List<Forest> AlgorithmP ( int n ) {
             if ( n < 0 )
                 throw new ArgumentOutOfRangeException ( "Non-negative number expected" );
             List<Forest> result = new List<Forest> ();
