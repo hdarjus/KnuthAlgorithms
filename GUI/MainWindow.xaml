@@ -13,8 +13,8 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Width="Auto" Height="500" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="0">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Height="Auto" Margin="0 20 0 0">
-                <RadioButton x:Name="rbAlgorithmP" Content="Nested Parentheses" IsChecked="True" Width="Auto"/>
-                <RadioButton x:Name="rbAlgorithmN" Content="Binary Tree Left Right Links" Width="Auto" IsEnabled="False"/>
+                <RadioButton x:Name="rbAlgorithmP" Content="Algorithm P" IsChecked="True" Width="Auto"/>
+                <RadioButton x:Name="rbAlgorithmN" Content="Algorithm N" Width="Auto" IsEnabled="False"/>
                 <StackPanel Orientation="Horizontal" Height="23">
                     <Label FontSize="11" Height="23" VerticalAlignment="Center">n =</Label>
                     <TextBox x:Name="nTextBox" Width="132"></TextBox>
