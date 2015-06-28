@@ -9,12 +9,19 @@ namespace UnitTests {
     [TestClass]
     public class ForestGeneratorTest {
         // From the book
-        ICollection<String> nestedPar4 = new HashSet<String> () {
+        IEnumerable<String> nestedPar4String = new HashSet<String> () {
             "()()()()", "()()(())", "()(())()", "()(()())",
             "()((()))", "(())()()", "(())(())", "(()())()",
             "(()()())", "(()(()))", "((()))()", "((())())",
             "((()()))", "(((())))"
         };
+
+        IEnumerable<Forest> all4;
+
+        [TestInitialize]
+        public void Init () {
+            all4 = nestedPar4String.Select<String, Forest> ( s => new Parentheses ( s ) );
+        }
 
         [TestMethod]
         public void AlgorithmP_0 () {
@@ -28,12 +35,12 @@ namespace UnitTests {
             Assert.IsTrue ( result.Contains ( new Parentheses ( "()" ) ) );
         }
 
-        [TestMethod]
+        [TestMethod, Timeout(1000)]
         public void AlgorithmP_4 () {
             ICollection<Forest> result = ForestGenerator.AlgorithmP ( 4 );
 
-            Assert.IsTrue ( result.Count == nestedPar4.Count );
-            Assert.IsTrue ( nestedPar4.All<String> ( e => result.Contains ( new Parentheses ( e ) ) ) );
+            Assert.IsTrue ( result.Count == all4.Count () );
+            Assert.IsTrue ( all4.All<Forest> ( e => result.Contains ( e ) ) );
         }
         
         [TestMethod]
@@ -48,12 +55,32 @@ namespace UnitTests {
             Assert.IsTrue ( result.Contains ( new Parentheses ( "()" ) ) );
         }
 
-        [TestMethod]
+        [TestMethod, Timeout(1000)]
         public void AlgorithmN_4 () {
             ICollection<Forest> result = ForestGenerator.AlgorithmN ( 4 );
 
-            Assert.IsTrue ( result.Count == nestedPar4.Count );
-            Assert.IsTrue ( nestedPar4.All<String> ( e => result.Contains ( new Parentheses ( e ) ) ) );
+            Assert.IsTrue ( result.Count == all4.Count () );
+            Assert.IsTrue ( all4.All<Forest> ( e => result.Contains ( e ) ) );
+        }
+        
+        [TestMethod]
+        public void AlgorithmB_0 () {
+            Assert.IsTrue ( ForestGenerator.AlgorithmB ( 0 ).Count == 0 );
+        }
+
+        [TestMethod, Timeout(100)]
+        public void AlgorithmB_1 () {
+            ICollection<Forest> result = ForestGenerator.AlgorithmB ( 1 );
+            Assert.IsTrue ( result.Count == 1 );
+            Assert.IsTrue ( result.Contains ( new Parentheses ( "()" ) ) );
+        }
+
+        [TestMethod, Timeout(1000)]
+        public void AlgorithmB_4 () {
+            ICollection<Forest> result = ForestGenerator.AlgorithmB ( 4 );
+
+            Assert.IsTrue ( result.Count == all4.Count () );
+            Assert.IsTrue ( all4.All<Forest> ( e => result.Contains ( e ) ) );
         }
     }
 }
